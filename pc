@@ -50,6 +50,9 @@ bindcode 83 exec playerctl next
 bindcode 80 exec $term
 bindcode 79 exec nautilus
 bindcode 89 exec google-chrome
+bindcode 88 kill
+
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
 ### Output configuration
 #
