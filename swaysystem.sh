@@ -4,5 +4,6 @@ mkdir -p /home/arte/.config/sway
 curl https://raw.githubusercontent.com/arte921/sway-configs/master/pc > /home/arte/.config/sway/config
 mkdir -p /home/arte/pictures
 curl https://i.redd.it/ijsf9nney0a41.jpg > /home/arte/pictures/ijsf9nney0a41.jpg 
+echo pulseaudio & >> bash_profile
 echo sway >> .bash_profile
 
