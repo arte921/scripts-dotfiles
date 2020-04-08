@@ -48,7 +48,7 @@ bindsym $mod+Shift+z exec amixer set Master 10%-
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /home/arte/pictures/ijsf9nney0a41.jpg fill
+output * bg /home/arte/pictures/ijsf9nney0a41.jpg fill
 #
 # Example configuration:
 #
