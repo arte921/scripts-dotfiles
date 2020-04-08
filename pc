@@ -42,8 +42,14 @@ bindsym $mod+Shift+g output DP-1 disable; output HDMI-A-1 disable; output DVI-D-
 bindsym $mod+Shift+b output HDMI-A-1 disable; output DVI-D-1 disable; DP-1 enable
 bindsym $mod+Shift+w output DP-1 enable; output HDMI-A-1 enable; output DVI-D-1 enable
 
-bindsym $mod+Shift+a exec amixer set Master 10%+
-bindsym $mod+Shift+z exec amixer set Master 10%-
+bindcode 49 exec playerctl pause
+bindcode 81 exec playerctl play-pause
+bindcode 85 exec amixer set Master 5%+
+bindcode 84 exec amixer set Master 5%-
+bindcode 83 exec playerctl next
+bindcode 80 exec $term
+bindcode 79 exec nautilus
+bindcode 89 exec google-chrome
 
 ### Output configuration
 #
