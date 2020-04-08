@@ -39,7 +39,7 @@ workspace 8 output HDMI-A-1
 workspace 9 output HDMI-A-1
 
 bindsym $mod+Shift+g output DP-1 disable; output HDMI-A-1 disable; output DVI-D-1 enable
-bindsym $mod+Shift+b output HDMI-A-1 disable; output DVI-D-1 disable; DP-1 enable
+bindsym $mod+Shift+b output HDMI-A-1 disable; output DVI-D-1 disable; output DP-1 enable
 bindsym $mod+Shift+w output DP-1 enable; output HDMI-A-1 enable; output DVI-D-1 enable
 
 bindcode 49 exec playerctl pause
@@ -51,6 +51,7 @@ bindcode 80 exec $term
 bindcode 79 exec nautilus
 bindcode 89 exec google-chrome
 bindcode 88 kill
+bindcode 87 exec $menu
 
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
