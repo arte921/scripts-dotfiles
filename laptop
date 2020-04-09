@@ -26,9 +26,11 @@ default_border none
 
 #bindsym ` workspace 1
 
-bindsym XF86AudioRaiseVolume exec "amixer set Master 10%+"
-bindsym XF86AudioLowerVolume exec "amixer set Master 10%-"
+bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+"
+bindsym XF86AudioLowerVolume exec "amixer set Master 5%-"
 bindsym XF86AudioMute exec "amixer set Master toggle"
+
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
 ### Output configuration
 #
