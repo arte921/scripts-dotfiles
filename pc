@@ -19,6 +19,11 @@ set $term gnome-terminal
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
+
+
+
+
+
 hide_edge_borders smart
 default_border none
 
@@ -55,10 +60,14 @@ bindcode 87 exec $menu
 
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/arte/pictures/ijsf9nney0a41.jpg fill
+
+
+
+
+
+
+
 #
 # Example configuration:
 #
