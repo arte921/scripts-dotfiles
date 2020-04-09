@@ -9,3 +9,4 @@ sudo systemctl enable --now cockpit.socket
 sudo firewall-cmd --add-service=cockpit
 sudo firewall-cmd --add-service=cockpit --permanent
 sudo systemctl enable --now sshd.service
+chown -R arte /home/arte
