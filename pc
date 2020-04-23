@@ -27,9 +27,9 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 hide_edge_borders smart
 default_border none
 
-output HDMI-A-1 pos 120 0 res 1440x900
-output DVI-D-1 pos 0 900 res 1680x1050
-output DP-1 pos 1680 926 res 1280x1024
+output HDMI-A-1 pos 2960 150 res 1440x900
+output DVI-D-1 pos 1280 0 res 1680x1050
+output DP-1 pos 0 26  res 1280x1024
 
 workspace 1 output DVI-D-1
 workspace 2 output DVI-D-1
@@ -60,13 +60,7 @@ bindcode 87 exec $menu
 
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
-output * bg /home/arte/pictures/ijsf9nney0a41.jpg fill
-
-
-
-
-
-
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 #
 # Example configuration:
