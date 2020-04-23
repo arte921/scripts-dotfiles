@@ -20,10 +20,6 @@ set $term gnome-terminal
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 
-
-
-
-
 hide_edge_borders smart
 default_border none
 
@@ -57,6 +53,7 @@ bindcode 79 exec nautilus
 bindcode 89 exec google-chrome
 bindcode 88 kill
 bindcode 87 exec $menu
+bindcode 107 exec grim -g "$(slurp -d)" - | wl-copy
 
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
