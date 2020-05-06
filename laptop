@@ -1,47 +1,23 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-# Your preferred terminal emulator
-set $term gnome-terminal
-# Your preferred application launcher
-# Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
-
-#output "*" bg /home/arte/ijsf9nney0a41.jpg fill
 
 hide_edge_borders smart
 default_border none
 
-#bindsym ` workspace 1
+bindcode 85 exec amixer set Master 5%+
+bindcode 84 exec amixer set Master 5%-
+bindcode 80 exec alacritty
+bindcode 89 exec chromium
+bindcode 88 kill
+bindcode 87 exec rofi -show drun
+bindcode 107 exec grim -g "$(slurp -d)" - | wl-copy
 
-bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+"
-bindsym XF86AudioLowerVolume exec "amixer set Master 5%-"
-bindsym XF86AudioMute exec "amixer set Master toggle"
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/f31/default/normalish/f31.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+output * bg #000000 solid_color 
+
 
 ### Idle configuration
 #
@@ -214,7 +190,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
+    position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -222,8 +198,10 @@ bar {
 
     colors {
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #000000
+        inactive_workspace #000000 #000000 #FFFFFF
+	focused_workspace #FFFFFF #FFFFFF #000000
+	active_workspace  #808080 #808080 #000000
     }
 }
 
