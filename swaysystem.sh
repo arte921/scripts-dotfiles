@@ -1,12 +1,8 @@
-dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-dnf install -y gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-ugly gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free gstreamer1-plugins-bad-freeworld gstreamer1-plugins-bad-free-extras ffmpeg vlc git sway nano firefox gnome-terminal nautilus gedit baobab libreoffice nodejs wine lutris steam playerctl android-tools polkit-gnome cockpit
-mkdir -p /home/arte/.config/sway
-curl https://raw.githubusercontent.com/arte921/sway-configs/master/laptop > /home/arte/.config/sway/config
-mkdir -p /home/arte/pictures
-curl https://i.redd.it/ijsf9nney0a41.jpg > /home/arte/pictures/ijsf9nney0a41.jpg 
-echo sway >> /home/arte/.bash_profile
-sudo systemctl enable --now cockpit.socket
-sudo firewall-cmd --add-service=cockpit
-sudo firewall-cmd --add-service=cockpit --permanent
+dnf update -y
+dnf install -y git sway nano chromium nodejs playerctl android-tools slurp grim wl-clipboard dkms bc kernel-devel kernel-headers
+curl https://raw.githubusercontent.com/arte921/scripts-dotfiles/master/sway-config > /home/arte/.config/sway/config
+curl https://raw.githubusercontent.com/arte921/scripts-dotfiles/master/.bashrc > /home/arte/.bashrc
 sudo systemctl enable --now sshd.service
+git clone https://github.com/tomaspinho/rtl8821ce.git
 chown -R arte /home/arte
+echo "reboot, go in rtl8821ce folder, run sudo ./dkms-install.sh, reboot again"
