@@ -1,5 +1,5 @@
 dnf update -y
-dnf install -y git sway nano chromium nodejs playerctl android-tools slurp grim wl-clipboard dkms bc kernel-devel kernel-headers
+dnf install -y git sway nano chromium nodejs playerctl android-tools slurp grim wl-clipboard dkms bc kernel-devel kernel-headers blueman
 curl https://raw.githubusercontent.com/arte921/scripts-dotfiles/master/sway-config > /home/arte/.config/sway/config
 curl https://raw.githubusercontent.com/arte921/scripts-dotfiles/master/.bashrc > /home/arte/.bashrc
 sudo systemctl enable --now sshd
