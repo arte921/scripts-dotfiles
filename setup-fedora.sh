@@ -5,4 +5,4 @@ curl https://raw.githubusercontent.com/arte921/scripts-dotfiles/master/.bashrc >
 sudo systemctl enable --now sshd
 git clone https://github.com/tomaspinho/rtl8821ce.git
 chown -R arte /home/arte
-echo "reboot, go in rtl8821ce folder, run sudo ./dkms-install.sh, reboot again"
+echo "reboot, go in rtl8821ce folder, run sudo ./dkms-install.sh, reboot again just in case"
