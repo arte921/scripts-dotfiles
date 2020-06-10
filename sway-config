@@ -59,6 +59,7 @@ bindcode 232 exec brightnessctl s 10-
 bindcode 233 exec brightnessctl s 10+
 bindcode 78 exec amixer set Master toggle
 bindcode 127 exec playerctl play-pause
+bindcode 135 exec playerctl pause & exec amixer set Master mute
 
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet --sm-disable
