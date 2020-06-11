@@ -1,0 +1,6 @@
+#!/bin/bash
+pulseaudio -k
+pulseaudio --start
+bluetoothctl power on
+bluetoothctl connect 06:15:C8:85:32:0D
+
