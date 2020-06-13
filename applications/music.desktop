@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Youtube Music
+Exec=/usr/bin/brave --app=https://music.youtube.com/
+Type=Application
