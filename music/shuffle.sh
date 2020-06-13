@@ -1,5 +1,5 @@
 while true
 do
-	aplay `ls | shuf -n1`
+	aplay $1/`ls $1 | shuf -n1`
 	sleep 1
 done
