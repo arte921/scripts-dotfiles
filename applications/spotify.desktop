@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Spotify
+Exec=/usr/bin/brave --app=https://open.spotify.com/playlist/29vt4WZPXwWmKlKpcpbvQ8
+Type=Application

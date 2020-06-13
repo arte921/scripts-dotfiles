@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Youtube
+Exec=/usr/bin/brave --app=https://www.youtube.com/
+Type=Application

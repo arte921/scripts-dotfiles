@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Discord brave
+Exec=/usr/bin/brave --app=https://discord.com/channels/@me
+Type=Application
