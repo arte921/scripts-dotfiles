@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Reddit
+Exec=/usr/bin/brave --app=https://www.reddit.com/
+Type=Application

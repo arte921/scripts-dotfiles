@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Whatsapp
+Exec=/usr/bin/brave --app=https://web.whatsapp.com/
+Type=Application
