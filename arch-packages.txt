@@ -2,7 +2,6 @@ alacritty
 alsa-utils
 amd-ucode
 arandr
-arch-wiki-dmenu-git
 atom
 audacity
 autoconf
@@ -11,7 +10,6 @@ base
 bc
 bison
 bluez-utils
-brave-bin
 brightnessctl
 chromium
 code
@@ -28,12 +26,10 @@ firefox
 flex
 gcc-fortran
 git
-godot
 grim
 groff
 htop
 i3-wm
-j4-dmenu-desktop
 libpipewire02
 linux
 linux-firmware
@@ -58,15 +54,12 @@ pulseaudio-bluetooth
 rust
 sassc
 slurp
-st
 steam
 sudo
-surf
 sway
 v4l2loopback-dkms
 vi
 vim
-wf-recorder
 which
 wl-clipboard
 wpa_supplicant
