@@ -28,6 +28,8 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   #networking.interfaces.enp27s0.useDHCP = true;
+  
+  services.mingetty.autologinUser = "arte";
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -44,8 +46,10 @@
     proggyfonts
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
    environment.systemPackages = with pkgs; [
-    wget vim sway chromium alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave
+    wget vim sway chromium alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -61,8 +65,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.blueman.enable = true;
-  #services.flatpak.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -74,9 +76,13 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
   hardware.opengl.enable = true;
+
+  hardware.pulseaudio = {
+	enable = true;
+	package = pkgs.pulseaudioFull;
+  };
 
   users.users.arte = {
     isNormalUser = true;
