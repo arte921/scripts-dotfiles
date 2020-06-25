@@ -1,0 +1,2 @@
+#!/bin/bash
+ESSION_TYPE=wayland dbus-run-session startplasma-wayland
