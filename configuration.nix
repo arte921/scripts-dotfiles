@@ -10,19 +10,30 @@
       ./hardware-configuration.nix
     ];
 
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.loader.grub.enable= true;
-  boot.loader.grub.device="/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.extraModulePackages = with config.boot.kernelPackages;
+    [
+      (rtl8821ce.overrideAttrs (old: {
+        version = "5.5.2_34066.20200325";
+        src = pkgs.fetchFromGitHub {
+          owner = "tomaspinho";
+          repo = "rtl8821ce";
+          rev = "69765eb288a8dfad3b055b906760b53e02ab1dea";
+          sha256 = "17jiw25k74kv5lnvgycvj2g1n06hbrpjz6p4znk4a62g136rhn4s";
+        };
+      }))
+    ];
+
 
   boot.kernelModules = [ "rtl8821ce" ];
   
   networking.hostName = "redstar"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
-
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
@@ -39,19 +50,14 @@
     noto-fonts-cjk
     noto-fonts-emoji
     liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts
-    dina-font
-    proggyfonts
   ];
 
   nixpkgs.config.allowUnfree = true;
 
    environment.systemPackages = with pkgs; [
-    wget vim sway chromium alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord
+    wget vim sway alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord lm_sensors micro vscode nano emacs bc chromium playerctl
    ];
-
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
