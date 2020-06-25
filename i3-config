@@ -14,10 +14,10 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term st
+set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu
+set $menu j4-dmenu-desktop 
 
 hide_edge_borders smart
 default_border none
@@ -41,7 +41,7 @@ bindcode 233 exec brightnessctl s 10+
 bindcode 78 exec amixer set Master toggle
 bindcode 127 exec playerctl play-pause
 bindcode 135 exec playerctl pause & exec amixer set Master mute
-
+bindsym $mod+Shift+u exec amixer set Master toggle
 
 #output * bg /home/arte/.keep/wallpaper.jpg fill
 
@@ -99,7 +99,7 @@ bindcode 135 exec playerctl pause & exec amixer set Master mute
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
-    floating_modifier $mod normal
+    floating_modifier $mod 
 
     # reload the configuration file
     bindsym $mod+Shift+c reload
@@ -231,7 +231,7 @@ bar {
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
   
-    status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+    status_command while echo `cat /sys/class/power_supply/BAT0/capacity`% `date +'%Y-%m-%d %H:%M:%S'`; do sleep 1; done
 
     colors {
         statusline #ffffff
