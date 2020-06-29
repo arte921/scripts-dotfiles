@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -28,17 +24,14 @@
       }))
     ];
 
-
   boot.kernelModules = [ "rtl8821ce" ];
   
-  networking.hostName = "redstar"; # Define your hostname.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "redstar";
   networking.networkmanager.enable = true;
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
   networking.useDHCP = false;
-  #networking.interfaces.enp27s0.useDHCP = true;
+
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = false;
   
   services.mingetty.autologinUser = "arte";
 
@@ -55,32 +48,27 @@
   nixpkgs.config.allowUnfree = true;
 
    environment.systemPackages = with pkgs; [
-    wget vim sway alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord lm_sensors micro vscode nano emacs bc chromium playerctl
+    wget vim sway alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord lm_sensors micro vscode nano emacs bc chromium playerctl nodejs firefox spidermonkey minetest superTuxKart android-studio lutris imagemagick jetbrains.idea-community xfce.xfce4-whiskermenu-plugin wine winetricks powershell atom sublime3 xfce.xfce4-battery-plugin zerotierone pulseeffects kdeconnect gimp nmap google-chrome
    ];
-  
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  #   pinentryFlavor = "gnome3";
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+   
+   nixpkgs.config.permittedInsecurePackages = [
+     "openssl-1.0.2u"
+   ];  
+   
+  services.flatpak.enable = true;
+  services.zerotierone.enable = true;
+  xdg.portal.enable = true;
+  services.blueman.enable = true;
+  programs.adb.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
 
-  # services.printing.enable = true;
-
-  # Enable sound.
   sound.enable = true;
   hardware.bluetooth.enable = true;
   hardware.opengl.enable = true;
@@ -92,8 +80,19 @@
 
   users.users.arte = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
   };
+
+  hardware.opengl.driSupport32Bit = true;
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome3.enable = true;
+  
+  services.xserver.displayManager.gdm.autoLogin.enable = true;
+  services.xserver.displayManager.gdm.autoLogin.user = "arte";
+
+  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.displayManager.defaultSession = "xfce";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
