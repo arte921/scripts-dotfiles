@@ -48,8 +48,8 @@
   nixpkgs.config.allowUnfree = true;
 
    environment.systemPackages = with pkgs; [
-    wget vim sway alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord lm_sensors micro vscode nano emacs bc chromium playerctl nodejs firefox spidermonkey minetest superTuxKart android-studio lutris imagemagick jetbrains.idea-community xfce.xfce4-whiskermenu-plugin wine winetricks powershell atom sublime3 xfce.xfce4-battery-plugin zerotierone pulseeffects kdeconnect gimp nmap google-chrome
-   ];
+    wget vim sway alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord lm_sensors micro vscode nano emacs bc chromium playerctl nodejs firefox spidermonkey minetest superTuxKart android-studio lutris imagemagick jetbrains.idea-community xfce.xfce4-whiskermenu-plugin wine winetricks powershell atom sublime3 xfce.xfce4-battery-plugin zerotierone pulseeffects kdeconnect gimp nmap google-chrome numix-cursor-theme
+  ];
    
    nixpkgs.config.permittedInsecurePackages = [
      "openssl-1.0.2u"
@@ -86,13 +86,12 @@
   hardware.opengl.driSupport32Bit = true;
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
   #services.xserver.desktopManager.gnome3.enable = true;
   
-  services.xserver.displayManager.gdm.autoLogin.enable = true;
+ #services.xserver.displayManager.gdm.autoLogin.enable = true;
   services.xserver.displayManager.gdm.autoLogin.user = "arte";
-
-  services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.displayManager.defaultSession = "xfce";
+  #services.xserver.displayManager.defaultSession = "gnome";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
