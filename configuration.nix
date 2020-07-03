@@ -33,7 +33,7 @@
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = false;
   
-  services.mingetty.autologinUser = "arte";
+  #services.mingetty.autologinUser = "arte";
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -48,7 +48,7 @@
   nixpkgs.config.allowUnfree = true;
 
    environment.systemPackages = with pkgs; [
-    wget vim sway alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord lm_sensors micro vscode nano emacs bc chromium playerctl nodejs firefox spidermonkey minetest superTuxKart android-studio lutris imagemagick jetbrains.idea-community xfce.xfce4-whiskermenu-plugin wine winetricks powershell atom sublime3 xfce.xfce4-battery-plugin zerotierone pulseeffects kdeconnect gimp nmap google-chrome arandr
+    wget vim sway alacritty neofetch git godot bluez-alsa bluez bluez-tools networkmanager grim slurp wl-clipboard mesa radeontop htop libGL ntfs3g j4-dmenu-desktop brightnessctl xwayland brave pavucontrol steam discord lm_sensors micro vscode nano emacs bc chromium playerctl nodejs firefox spidermonkey minetest superTuxKart android-studio lutris imagemagick jetbrains.idea-community xfce.xfce4-whiskermenu-plugin wine winetricks powershell atom sublime3 xfce.xfce4-battery-plugin zerotierone pulseeffects kdeconnect gimp nmap google-chrome arandr kitty unzip zip gnome3.gnome-tweaks
   ];
    
    nixpkgs.config.permittedInsecurePackages = [
@@ -61,13 +61,8 @@
   services.blueman.enable = true;
   programs.adb.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-  networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+  #networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  #networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
 
   sound.enable = true;
   hardware.bluetooth.enable = true;
@@ -81,17 +76,19 @@
   users.users.arte = {
     isNormalUser = true;
     extraGroups = [ "wheel" "adbusers" ];
-    shell = pkgs.powershell;
   };
 
   hardware.opengl.driSupport32Bit = true;
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;  
-  
-  services.xserver.displayManager.gdm.autoLogin.enable = true;
-  services.xserver.displayManager.gdm.autoLogin.user = "arte";
-  services.xserver.displayManager.defaultSession = "xfce";
+  #services.xserver.desktopManager.xfce.enable = true;  
+  services.xserver.desktopManager.gnome3.enable = true;  
+
+  #services.xserver.displayManager.gdm.autoLogin.enable = true;
+  #services.xserver.displayManager.gdm.autoLogin.user = "arte";
+  #services.xserver.displayManager.defaultSession = "gnome";
+
+  #services.picom.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
