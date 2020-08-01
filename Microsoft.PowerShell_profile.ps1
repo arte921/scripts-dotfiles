@@ -3,3 +3,5 @@ function prompt {
   $host.ui.RawUI.WindowTitle = $p
   "$p > "
 }
+
+Set-PSReadlineKeyHandler -Key Tab -Function Complete
