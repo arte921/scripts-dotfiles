@@ -6,29 +6,37 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
-set $menu j4-dmenu-desktop
+set $term /home/arte/.cargo/bin/alacritty
+set $menu rofi -show drun
+
+set $dispa eDP-1
+set $dispb HDMI-A-1
 
 hide_edge_borders smart
 default_border none
 
-input "1267:226:Elan_Touchpad" {
+xwayland enable
+
+workspace 1 output $dispa
+workspace 2 output $dispa
+workspace 3 output $dispa
+workspace 4 output $dispa
+workspace 5 output $dispa
+workspace 6 output $dispb
+workspace 7 output $dispb
+workspace 8 output $dispb
+workspace 9 output $dispb
+workspace 10 output $dispb
+
+output $dispa pos 0 0
+output $dispb pos 1920 0
+
+input "2:7:SynPS/2_Synaptics_TouchPad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
 }
-
-workspace 1 output eDP-1
-workspace 2 output eDP-1
-workspace 3 output eDP-1
-workspace 4 output eDP-1
-workspace 5 output eDP-1
-workspace 6 output HDMI-A-1
-workspace 7 output HDMI-A-1
-workspace 8 output HDMI-A-1
-workspace 9 output HDMI-A-1
-workspace 10 output HDMI-A-1
 
 bindcode 123 exec amixer set Master 5%+
 bindcode 122 exec amixer set Master 5%-
@@ -38,13 +46,16 @@ bindcode 233 exec brightnessctl s 5+
 bindcode 78 exec amixer set Master toggle
 bindcode 127 exec playerctl play-pause
 bindcode 135 exec playerctl pause & exec amixer set Master mute
+bindcode 108 exec playerctl pause & exec amixer set Master mute
 bindcode 171 exec playerctl next
 bindcode 173 exec playerctl previous 
 bindcode 172 exec playerctl play-pause 
 bindcode 121 exec amixer set Master toggle
+bindsym $mod+p exec brightnessctl s 10%+
+bindsym $mod+o exec brightnessctl s 10%-
 bindsym $mod+Shift+u exec amixer set Master toggle
 
-output * bg /home/arte/.keep/wallpaper.jpg fill
+output * bg /home/arte/vault/wallpaper.jpg fill
 
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
@@ -174,8 +185,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
-    #`sensors | awk '/^Package/ {printf "%d\n", $4}' | sed 's/$/°C/'` `cpupower frequency-info | awk '/frequency:/ {print $4$5}' | tail -n +3` `free -h | awk '/^Mem:/ {print $3}' | sed 's/Gi/GB/g'`  
-    status_command while echo `cat /sys/class/power_supply/BAT0/capacity`% `date +'%Y-%m-%d %H:%M:%S'`; do sleep 1; done
+    status_command while echo `cat /sys/class/power_supply/BAT1/capacity`% `date +'%Y-%m-%d %H:%M:%S'`; do sleep 1; done
 
     colors {
         statusline #ffffff
