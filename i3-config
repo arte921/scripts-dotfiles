@@ -35,7 +35,7 @@ workspace 10 output HDMI-A-0
 
 bindcode 123 exec amixer set Master 19%+
 bindcode 122 exec amixer set Master 10%-
-bindcode 107 exec grim -g "$(slurp -d)" - | wl-copy -t image/png
+bindcode 107 exec maim -s  | xclip -selection clipboard -t image/png
 bindcode 232 exec brightnessctl s 10-
 bindcode 233 exec brightnessctl s 10+
 bindcode 78 exec amixer set Master toggle
