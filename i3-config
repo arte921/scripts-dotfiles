@@ -33,15 +33,11 @@ workspace 8 output HDMI-A-0
 workspace 9 output HDMI-A-0
 workspace 10 output HDMI-A-0
 
-bindcode 123 exec amixer set Master 19%+
-bindcode 122 exec amixer set Master 10%-
+bindcode 123 exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindcode 122 exec pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindcode 107 exec maim -s  | xclip -selection clipboard -t image/png
 bindcode 232 exec brightnessctl s 10-
 bindcode 233 exec brightnessctl s 10+
-bindcode 78 exec amixer set Master toggle
-bindcode 127 exec playerctl play-pause
-bindcode 135 exec playerctl pause & exec amixer set Master mute
-bindsym $mod+Shift+u exec amixer set Master toggle
 bindcode 172 exec playerctl play-pause 
 bindcode 171 exec playerctl next
 bindcode 173 exec playerctl previous
