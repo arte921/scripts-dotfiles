@@ -6,32 +6,37 @@ set $down j
 set $up k
 set $right l
 
-set $term /home/arte/.cargo/bin/alacritty
-set $menu rofi -show drun
+set $term alacritty
+set $menu j4-dmenu-desktop
 
 set $dispa eDP-1
-set $dispb HDMI-A-1
+set $dispb DP-1
+set $dispc HDMI-A-1
 
 hide_edge_borders smart
 default_border none
 
 xwayland enable
 
-workspace 1 output $dispa
-workspace 2 output $dispa
-workspace 3 output $dispa
-workspace 4 output $dispa
-workspace 5 output $dispa
-workspace 6 output $dispb
-workspace 7 output $dispb
-workspace 8 output $dispb
-workspace 9 output $dispb
-workspace 10 output $dispb
+workspace 1 output $dispb
+workspace 2 output $dispb
+workspace 3 output $dispb
+workspace 4 output $dispb
+workspace 5 output $dispb
+workspace 6 output $dispc
+workspace 7 output $dispc
+workspace 8 output $dispc
+workspace 9 output $dispc
+workspace 10 output $dispc
 
-output $dispa pos 0 0
+output $dispa disable
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
+
 output $dispb pos 1920 0
+output $dispc pos 0 0
 
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "2:7:SynPS\/2_Synaptics_TouchPad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
@@ -185,7 +190,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
-    status_command while echo `cat /sys/class/power_supply/BAT1/capacity`% `date +'%Y-%m-%d %H:%M:%S'`; do sleep 1; done
+    status_command while echo `cat /sys/class/power_supply/BAT0/capacity`% `date +'%Y-%m-%d %H:%M:%S'`; do sleep 1; done
 
     colors {
         statusline #ffffff
@@ -197,3 +202,4 @@ bar {
 }
 
 include /etc/sway/config.d/*
+
